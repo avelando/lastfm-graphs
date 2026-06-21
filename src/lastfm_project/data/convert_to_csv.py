@@ -17,9 +17,19 @@ FILES_TO_CONVERT = {
 
 
 def convert_dat_to_csv(input_path: Path, output_path: Path) -> None:
-    df = pd.read_csv(input_path, sep="\t", encoding="latin-1")
+    try:
+        df = pd.read_csv(input_path, sep="\t", encoding="utf-8")
+        encoding_used = "utf-8"
+    except UnicodeDecodeError:
+        df = pd.read_csv(input_path, sep="\t", encoding="latin-1")
+        encoding_used = "latin-1"
+
     df.to_csv(output_path, index=False, encoding="utf-8-sig")
-    print(f"Convertido: {input_path.name} -> {output_path.name} | {len(df)} linhas")
+
+    print(
+        f"Convertido: {input_path.name} -> {output_path.name} | "
+        f"leitura={encoding_used} | saída=utf-8-sig | {len(df)} linhas"
+    )
 
 
 def convert_all() -> None:
