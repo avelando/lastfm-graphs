@@ -6,6 +6,7 @@ from networkx.algorithms.community import louvain_communities
 
 GRAPH_CSV_DIR = Path("data/graphs/csv")
 REPORT_DIR = Path("reports/graphs")
+PROCESSED_DIR = Path("data/processed")
 
 
 def load_user_graph() -> nx.Graph:
@@ -29,7 +30,7 @@ def load_user_graph() -> nx.Graph:
 def compute_community_map(graph: nx.Graph) -> dict:
     communities = louvain_communities(graph, weight="weight", seed=42)
     community_map = {}
-    for community_id, members in enumerate(communities):
+    for community_id, members in enumerate(communities, start=1):
         for node in members:
             community_map[node] = community_id
     return community_map
@@ -68,13 +69,18 @@ def generate_user_metrics() -> None:
         })
 
     df = pd.DataFrame(rows).sort_values("userID").reset_index(drop=True)
-    output_path = REPORT_DIR / "user_metrics.csv"
-    df.to_csv(output_path, index=False, encoding="utf-8-sig")
+
+    report_path = REPORT_DIR / "user_metrics.csv"
+    df.to_csv(report_path, index=False, encoding="utf-8-sig")
+
+    processed_path = PROCESSED_DIR / "user_network_metrics.csv"
+    df.to_csv(processed_path, index=False, encoding="utf-8-sig")
 
     print(f"user_metrics.csv gerado: {len(df)} usuários")
     print(f"Comunidades Louvain: {df['community'].nunique()}")
     print(f"Componentes: {df['component'].nunique()} (maior: {(df['component'] == 0).sum()} nós)")
-    print(f"Salvo em: {output_path}")
+    print(f"Salvo em: {report_path}")
+    print(f"Salvo em: {processed_path}")
 
 
 if __name__ == "__main__":
