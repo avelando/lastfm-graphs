@@ -1,0 +1,9 @@
+﻿graph,node_type,count
+user_user_friendship,user,1892
+user_artist_bipartite,user,1892
+user_artist_bipartite,artist,17632
+artist_tag_bipartite,artist,12133
+artist_tag_bipartite,tag,9718
+heterogeneous_lastfm,user,1892
+heterogeneous_lastfm,artist,17632
+heterogeneous_lastfm,tag,9718

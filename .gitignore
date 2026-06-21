@@ -1,0 +1,57 @@
+# Ambiente virtual
+venv/
+.venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Configurações locais
+.env
+.env.*
+*.env
+
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+*.log
+logs/
+
+# Arquivos temporários
+tmp/
+temp/
+*.tmp
+
+# Manter estrutura de pastas, se usar .gitkeep
+!data/raw/.gitkeep
+!data/extracted/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+!data/graphs/.gitkeep
+
+# Arquivos de cache
+.cache/
+.pytest_cache/
+.mypy_cache/
+
+# Build e distribuição
+build/
+dist/
+*.egg-info/

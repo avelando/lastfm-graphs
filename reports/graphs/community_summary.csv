@@ -1,0 +1,5 @@
+﻿graph,communities,modularity,largest_community_nodes,smallest_community_nodes,average_community_size,median_community_size
+user_user_friendship,34,0.458481,668,2,55.6471,3.0
+user_artist_bipartite,32,0.586644,4132,2,610.125,96.0
+artist_tag_bipartite,206,0.523534,3517,2,106.0728,2.0
+heterogeneous_lastfm,23,0.591673,5530,9,1271.3913,610.0

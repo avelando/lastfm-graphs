@@ -1,0 +1,5 @@
+﻿graph,nodes,edges,density,average_degree,median_degree,minimum_degree,maximum_degree,average_weighted_degree,median_weighted_degree,minimum_weighted_degree,maximum_weighted_degree,communities,modularity
+user_user_friendship,1892,12717,0.00710889,13.4429,6.0,1,119,13.4429,6.0,1.0,119.0,34,0.458481
+user_artist_bipartite,19524,92834,0.0004871,9.5097,1.0,1,611,7087.0698,439.0,1.0,2393140.0,32,0.586644
+artist_tag_bipartite,21851,108437,0.00045424,9.9251,3.0,1,2248,16.9275,3.0,1.0,7459.0,206,0.523534
+heterogeneous_lastfm,29242,213988,0.00050052,14.6357,3.0,1,2248,4745.3412,139.0,1.0,2394071.0,23,0.591673

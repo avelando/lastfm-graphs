@@ -1,0 +1,7 @@
+﻿graph,edge_type,count
+user_user_friendship,friendship,12717
+user_artist_bipartite,listened,92834
+artist_tag_bipartite,has_tag,108437
+heterogeneous_lastfm,friendship,12717
+heterogeneous_lastfm,listened,92834
+heterogeneous_lastfm,has_tag,108437

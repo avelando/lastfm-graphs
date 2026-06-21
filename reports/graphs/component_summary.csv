@@ -1,0 +1,5 @@
+﻿graph,connected_components,largest_component_nodes,largest_component_percent,smallest_component_nodes,average_component_size,median_component_size
+user_user_friendship,20,1843,97.4101,2,94.6,2.0
+user_artist_bipartite,8,19507,99.9129,2,2440.5,2.0
+artist_tag_bipartite,169,21431,98.0779,2,129.2959,2.0
+heterogeneous_lastfm,1,29242,100.0,29242,29242.0,29242.0

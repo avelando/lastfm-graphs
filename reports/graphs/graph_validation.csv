@@ -1,0 +1,5 @@
+﻿graph,duplicated_nodes,duplicated_edges,self_loops,isolated_nodes,nodes_without_type
+user_user_friendship,0,0,0,0,0
+user_artist_bipartite,0,0,0,0,0
+artist_tag_bipartite,0,0,0,0,0
+heterogeneous_lastfm,0,0,0,0,0

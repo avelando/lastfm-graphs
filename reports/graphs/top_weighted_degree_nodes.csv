@@ -1,0 +1,81 @@
+﻿graph,node_id,node_type,label,weighted_degree
+user_user_friendship,user_1543,user,,119.0
+user_user_friendship,user_1281,user,,110.0
+user_user_friendship,user_831,user,,106.0
+user_user_friendship,user_179,user,,97.0
+user_user_friendship,user_1503,user,,95.0
+user_user_friendship,user_1023,user,,91.0
+user_user_friendship,user_405,user,,90.0
+user_user_friendship,user_1895,user,,90.0
+user_user_friendship,user_1300,user,,89.0
+user_user_friendship,user_390,user,,88.0
+user_user_friendship,user_232,user,,87.0
+user_user_friendship,user_1258,user,,86.0
+user_user_friendship,user_1568,user,,85.0
+user_user_friendship,user_46,user,,84.0
+user_user_friendship,user_851,user,,84.0
+user_user_friendship,user_749,user,,82.0
+user_user_friendship,user_1247,user,,82.0
+user_user_friendship,user_78,user,,81.0
+user_user_friendship,user_236,user,,81.0
+user_user_friendship,user_2068,user,,80.0
+user_artist_bipartite,artist_289,artist,Britney Spears,2393140.0
+user_artist_bipartite,artist_72,artist,Depeche Mode,1301308.0
+user_artist_bipartite,artist_89,artist,Lady Gaga,1291387.0
+user_artist_bipartite,artist_292,artist,Christina Aguilera,1058405.0
+user_artist_bipartite,artist_498,artist,Paramore,963449.0
+user_artist_bipartite,artist_67,artist,Madonna,921198.0
+user_artist_bipartite,artist_288,artist,Rihanna,905423.0
+user_artist_bipartite,artist_701,artist,Shakira,688529.0
+user_artist_bipartite,artist_227,artist,The Beatles,662116.0
+user_artist_bipartite,artist_300,artist,Katy Perry,532545.0
+user_artist_bipartite,artist_333,artist,Avril Lavigne,525844.0
+user_artist_bipartite,artist_344,artist,Taylor Swift,525292.0
+user_artist_bipartite,artist_378,artist,Evanescence,513476.0
+user_artist_bipartite,artist_679,artist,Glee Cast,506453.0
+user_artist_bipartite,artist_295,artist,BeyoncÃ©,499318.0
+user_artist_bipartite,artist_511,artist,U2,493024.0
+user_artist_bipartite,artist_461,artist,Miley Cyrus,489065.0
+user_artist_bipartite,artist_486,artist,30 Seconds to Mars,485532.0
+user_artist_bipartite,artist_190,artist,Muse,485076.0
+user_artist_bipartite,user_757,user,,480039.0
+artist_tag_bipartite,tag_73,tag,rock,7459.0
+artist_tag_bipartite,tag_24,tag,pop,5401.0
+artist_tag_bipartite,tag_79,tag,alternative,5223.0
+artist_tag_bipartite,tag_18,tag,electronic,4616.0
+artist_tag_bipartite,tag_81,tag,indie,4422.0
+artist_tag_bipartite,tag_130,tag,female vocalists,4207.0
+artist_tag_bipartite,tag_25,tag,80s,2782.0
+artist_tag_bipartite,tag_39,tag,dance,2726.0
+artist_tag_bipartite,tag_78,tag,alternative rock,2619.0
+artist_tag_bipartite,tag_192,tag,classic rock,2282.0
+artist_tag_bipartite,tag_195,tag,british,2085.0
+artist_tag_bipartite,tag_84,tag,indie rock,2053.0
+artist_tag_bipartite,tag_134,tag,singer-songwriter,1826.0
+artist_tag_bipartite,tag_72,tag,hard rock,1784.0
+artist_tag_bipartite,tag_1,tag,metal,1722.0
+artist_tag_bipartite,tag_33,tag,experimental,1702.0
+artist_tag_bipartite,tag_14,tag,ambient,1660.0
+artist_tag_bipartite,tag_352,tag,90s,1604.0
+artist_tag_bipartite,tag_16,tag,new wave,1589.0
+artist_tag_bipartite,tag_127,tag,seen live,1426.0
+heterogeneous_lastfm,artist_289,artist,Britney Spears,2394071.0
+heterogeneous_lastfm,artist_72,artist,Depeche Mode,1302009.0
+heterogeneous_lastfm,artist_89,artist,Lady Gaga,1292154.0
+heterogeneous_lastfm,artist_292,artist,Christina Aguilera,1059167.0
+heterogeneous_lastfm,artist_498,artist,Paramore,963916.0
+heterogeneous_lastfm,artist_67,artist,Madonna,921928.0
+heterogeneous_lastfm,artist_288,artist,Rihanna,905951.0
+heterogeneous_lastfm,artist_701,artist,Shakira,688873.0
+heterogeneous_lastfm,artist_227,artist,The Beatles,662714.0
+heterogeneous_lastfm,artist_300,artist,Katy Perry,532969.0
+heterogeneous_lastfm,artist_333,artist,Avril Lavigne,526289.0
+heterogeneous_lastfm,artist_344,artist,Taylor Swift,525597.0
+heterogeneous_lastfm,artist_378,artist,Evanescence,513752.0
+heterogeneous_lastfm,artist_679,artist,Glee Cast,506577.0
+heterogeneous_lastfm,artist_295,artist,BeyoncÃ©,499683.0
+heterogeneous_lastfm,artist_511,artist,U2,493302.0
+heterogeneous_lastfm,artist_461,artist,Miley Cyrus,489359.0
+heterogeneous_lastfm,artist_486,artist,30 Seconds to Mars,485821.0
+heterogeneous_lastfm,artist_190,artist,Muse,485671.0
+heterogeneous_lastfm,user_757,user,,480071.0

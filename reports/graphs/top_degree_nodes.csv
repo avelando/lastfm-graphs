@@ -1,0 +1,81 @@
+﻿graph,node_id,node_type,label,degree
+user_user_friendship,user_1543,user,,119
+user_user_friendship,user_1281,user,,110
+user_user_friendship,user_831,user,,106
+user_user_friendship,user_179,user,,97
+user_user_friendship,user_1503,user,,95
+user_user_friendship,user_1023,user,,91
+user_user_friendship,user_405,user,,90
+user_user_friendship,user_1895,user,,90
+user_user_friendship,user_1300,user,,89
+user_user_friendship,user_390,user,,88
+user_user_friendship,user_232,user,,87
+user_user_friendship,user_1258,user,,86
+user_user_friendship,user_1568,user,,85
+user_user_friendship,user_46,user,,84
+user_user_friendship,user_851,user,,84
+user_user_friendship,user_749,user,,82
+user_user_friendship,user_1247,user,,82
+user_user_friendship,user_78,user,,81
+user_user_friendship,user_236,user,,81
+user_user_friendship,user_2068,user,,80
+user_artist_bipartite,artist_89,artist,Lady Gaga,611
+user_artist_bipartite,artist_289,artist,Britney Spears,522
+user_artist_bipartite,artist_288,artist,Rihanna,484
+user_artist_bipartite,artist_227,artist,The Beatles,480
+user_artist_bipartite,artist_300,artist,Katy Perry,473
+user_artist_bipartite,artist_67,artist,Madonna,429
+user_artist_bipartite,artist_333,artist,Avril Lavigne,417
+user_artist_bipartite,artist_292,artist,Christina Aguilera,407
+user_artist_bipartite,artist_190,artist,Muse,400
+user_artist_bipartite,artist_498,artist,Paramore,399
+user_artist_bipartite,artist_295,artist,BeyoncÃ©,397
+user_artist_bipartite,artist_154,artist,Radiohead,393
+user_artist_bipartite,artist_65,artist,Coldplay,369
+user_artist_bipartite,artist_466,artist,Ke$ha,362
+user_artist_bipartite,artist_701,artist,Shakira,319
+user_artist_bipartite,artist_302,artist,P!nk,305
+user_artist_bipartite,artist_229,artist,The Killers,304
+user_artist_bipartite,artist_306,artist,Black Eyed Peas,304
+user_artist_bipartite,artist_55,artist,Kylie Minogue,298
+user_artist_bipartite,artist_461,artist,Miley Cyrus,286
+artist_tag_bipartite,tag_73,tag,rock,2248
+artist_tag_bipartite,tag_24,tag,pop,1726
+artist_tag_bipartite,tag_79,tag,alternative,1718
+artist_tag_bipartite,tag_18,tag,electronic,1704
+artist_tag_bipartite,tag_81,tag,indie,1505
+artist_tag_bipartite,tag_130,tag,female vocalists,1380
+artist_tag_bipartite,tag_127,tag,seen live,1001
+artist_tag_bipartite,tag_33,tag,experimental,934
+artist_tag_bipartite,tag_39,tag,dance,931
+artist_tag_bipartite,tag_134,tag,singer-songwriter,865
+artist_tag_bipartite,tag_78,tag,alternative rock,863
+artist_tag_bipartite,tag_25,tag,80s,803
+artist_tag_bipartite,tag_352,tag,90s,775
+artist_tag_bipartite,tag_14,tag,ambient,763
+artist_tag_bipartite,tag_84,tag,indie rock,759
+artist_tag_bipartite,tag_187,tag,electronica,738
+artist_tag_bipartite,tag_13,tag,chillout,723
+artist_tag_bipartite,tag_195,tag,british,674
+artist_tag_bipartite,tag_191,tag,instrumental,670
+artist_tag_bipartite,tag_292,tag,folk,654
+heterogeneous_lastfm,tag_73,tag,rock,2248
+heterogeneous_lastfm,tag_24,tag,pop,1726
+heterogeneous_lastfm,tag_79,tag,alternative,1718
+heterogeneous_lastfm,tag_18,tag,electronic,1704
+heterogeneous_lastfm,tag_81,tag,indie,1505
+heterogeneous_lastfm,tag_130,tag,female vocalists,1380
+heterogeneous_lastfm,tag_127,tag,seen live,1001
+heterogeneous_lastfm,tag_33,tag,experimental,934
+heterogeneous_lastfm,tag_39,tag,dance,931
+heterogeneous_lastfm,artist_89,artist,Lady Gaga,868
+heterogeneous_lastfm,tag_134,tag,singer-songwriter,865
+heterogeneous_lastfm,tag_78,tag,alternative rock,863
+heterogeneous_lastfm,artist_289,artist,Britney Spears,851
+heterogeneous_lastfm,tag_25,tag,80s,803
+heterogeneous_lastfm,tag_352,tag,90s,775
+heterogeneous_lastfm,tag_14,tag,ambient,763
+heterogeneous_lastfm,tag_84,tag,indie rock,759
+heterogeneous_lastfm,tag_187,tag,electronica,738
+heterogeneous_lastfm,tag_13,tag,chillout,723
+heterogeneous_lastfm,artist_292,artist,Christina Aguilera,689
