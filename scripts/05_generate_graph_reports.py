@@ -1,4 +1,4 @@
-from src.lastfm_project.graphs.report_graphs import generate_graph_reports
+from src.graphs.report_graphs import generate_graph_reports
 
 
 if __name__ == "__main__":

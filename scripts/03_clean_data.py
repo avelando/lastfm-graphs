@@ -1,4 +1,4 @@
-from src.lastfm_project.data.clean import clean_all
+from src.data.clean import clean_all
 
 
 if __name__ == "__main__":
