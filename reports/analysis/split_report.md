@@ -7,16 +7,16 @@ Seed: 42
 
 | Conjunto | Interações | Usuários | Artistas únicos |
 |---|---|---|---|
-| Treino | 76106 | 1877 | 15590 |
-| Validação | 9263 | 1877 | 3984 |
-| Teste | 7432 | 1877 | 3423 |
+| Treino | 74246 | 1877 | 15347 |
+| Validação | 9279 | 1877 | 4022 |
+| Teste | 9276 | 1877 | 3978 |
 
 ## Distribuição de itens por usuário
 | Conjunto | Média | Mediana | Min | Max |
 |---|---|---|---|---|
-| Treino | 40.5 | 41.0 | 3 | 41 |
+| Treino | 39.6 | 40.0 | 3 | 40 |
 | Validação | 4.9 | 5.0 | 1 | 5 |
-| Teste | 4.0 | 4.0 | 1 | 4 |
+| Teste | 4.9 | 5.0 | 1 | 5 |
 
 ## Notas
 - Split estratificado por usuário (não global).

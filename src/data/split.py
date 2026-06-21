@@ -30,8 +30,8 @@ def split_user_interactions(
         items = group.sample(frac=1, random_state=int(rng.integers(0, 2**31))).reset_index(drop=True)
         n = len(items)
 
-        n_test = max(1, int(np.floor(n * (1 - train_ratio - val_ratio))))
-        n_val = max(1, int(np.floor(n * val_ratio)))
+        n_test = max(1, round(n * (1 - train_ratio - val_ratio)))
+        n_val = max(1, round(n * val_ratio))
         n_train = n - n_val - n_test
 
         if n_train < 1:
