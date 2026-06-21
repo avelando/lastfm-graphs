@@ -10,6 +10,8 @@ PROCESSED_DIR = Path("data/processed")
 REPORT_DIR = Path("reports/models")
 K_EVAL = 10
 K_NEIGHBORS = 50
+K_SEARCH_USER = [5, 10, 15, 20, 25, 30, 50]
+K_SEARCH_ITEM = [50, 100, 150, 200, 300, 400]
 
 
 def build_index(values: pd.Series) -> tuple:
@@ -79,14 +81,14 @@ def truncate_top_k(sim_matrix: np.ndarray, k: int) -> np.ndarray:
     return truncated
 
 
-def run_userknn(R_train, val_df, test_df, users, artists, train_items, k=K_NEIGHBORS):
+def run_userknn(R_train, val_df, test_df, users, artists, train_items, k=K_NEIGHBORS,
+                user_sim=None):
     print(f"UserKNN (k={k})...")
-    R_norm = normalize(R_train, norm="l2")
-    user_sim = (R_norm @ R_norm.T).toarray()
+    if user_sim is None:
+        R_norm = normalize(R_train, norm="l2")
+        user_sim = (R_norm @ R_norm.T).toarray()
     user_sim_k = truncate_top_k(user_sim, k)
-
     scores = user_sim_k @ R_train.toarray()
-
     recs = build_recommendations(scores, users, artists, train_items)
     val_m = evaluate_recommendations(recs, val_df)
     test_m = evaluate_recommendations(recs, test_df)
@@ -95,22 +97,14 @@ def run_userknn(R_train, val_df, test_df, users, artists, train_items, k=K_NEIGH
 
 # --- ItemKNN ---
 
-def run_itemknn(R_train, val_df, test_df, users, artists, train_items, k=K_NEIGHBORS):
+def run_itemknn(R_train, val_df, test_df, users, artists, train_items, k=K_NEIGHBORS,
+                item_sim=None):
     print(f"ItemKNN (k={k})...")
-    R_norm_items = normalize(R_train.T, norm="l2")
-    item_sim = (R_norm_items @ R_norm_items.T).toarray()
-
-    # Truncar top-k por item (zerando similares fora do top-k)
-    for j in range(item_sim.shape[0]):
-        row = item_sim[j].copy()
-        row[j] = -np.inf
-        top_k_idx = np.argsort(row)[::-1][:k]
-        mask = np.zeros(len(row), dtype=bool)
-        mask[top_k_idx] = True
-        item_sim[j, ~mask] = 0.0
-
-    scores = R_train.toarray() @ item_sim
-
+    if item_sim is None:
+        R_norm_items = normalize(R_train.T, norm="l2")
+        item_sim = (R_norm_items @ R_norm_items.T).toarray()
+    item_sim_k = truncate_top_k(item_sim, k)
+    scores = R_train.toarray() @ item_sim_k
     recs = build_recommendations(scores, users, artists, train_items)
     val_m = evaluate_recommendations(recs, val_df)
     test_m = evaluate_recommendations(recs, test_df)
@@ -151,11 +145,40 @@ def run_baselines() -> None:
     print_summary("Popularity", val_m, test_m)
     results["popularity"] = (val_m, test_m)
 
-    val_m, test_m = run_userknn(R_train, val_df, test_df, users, artists, train_items)
+    print("\nTunando k para UserKNN...")
+    R_norm = normalize(R_train, norm="l2")
+    user_sim = (R_norm @ R_norm.T).toarray()
+    R_dense = R_train.toarray()
+    best_k_uknn, best_ndcg_uknn = K_SEARCH_USER[0], -1.0
+    for k in K_SEARCH_USER:
+        sim_k = truncate_top_k(user_sim, k)
+        sc = sim_k @ R_dense
+        recs = build_recommendations(sc, users, artists, train_items)
+        ndcg = evaluate_recommendations(recs, val_df)["ndcg@10"].mean()
+        print(f"  k={k}  val ndcg@10={ndcg:.4f}")
+        if ndcg > best_ndcg_uknn:
+            best_ndcg_uknn, best_k_uknn = ndcg, k
+    print(f"  -> melhor k={best_k_uknn}")
+    val_m, test_m = run_userknn(R_train, val_df, test_df, users, artists, train_items,
+                                k=best_k_uknn, user_sim=user_sim)
     print_summary("UserKNN", val_m, test_m)
     results["userknn"] = (val_m, test_m)
 
-    val_m, test_m = run_itemknn(R_train, val_df, test_df, users, artists, train_items)
+    print("\nTunando k para ItemKNN...")
+    R_norm_items = normalize(R_train.T, norm="l2")
+    item_sim = (R_norm_items @ R_norm_items.T).toarray()
+    best_k_iknn, best_ndcg_iknn = K_SEARCH_ITEM[0], -1.0
+    for k in K_SEARCH_ITEM:
+        sim_k = truncate_top_k(item_sim, k)
+        sc = R_dense @ sim_k
+        recs = build_recommendations(sc, users, artists, train_items)
+        ndcg = evaluate_recommendations(recs, val_df)["ndcg@10"].mean()
+        print(f"  k={k}  val ndcg@10={ndcg:.4f}")
+        if ndcg > best_ndcg_iknn:
+            best_ndcg_iknn, best_k_iknn = ndcg, k
+    print(f"  -> melhor k={best_k_iknn}")
+    val_m, test_m = run_itemknn(R_train, val_df, test_df, users, artists, train_items,
+                                k=best_k_iknn, item_sim=item_sim)
     print_summary("ItemKNN", val_m, test_m)
     results["itemknn"] = (val_m, test_m)
 

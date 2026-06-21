@@ -8,7 +8,7 @@ from src.models.metrics import evaluate_recommendations, filter_warm_items
 
 PROCESSED_DIR = Path("data/processed")
 REPORT_DIR = Path("reports/models")
-ALPHA_CANDIDATES = [0.15, 0.25, 0.50, 0.85]
+ALPHA_CANDIDATES = [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
 N_ITER = 30
 
 
