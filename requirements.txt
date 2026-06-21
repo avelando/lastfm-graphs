@@ -1,3 +1,7 @@
 pandas
 networkx
 tabulate
+numpy
+scipy
+scikit-learn
+python-louvain

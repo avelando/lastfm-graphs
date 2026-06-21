@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 from scipy.sparse import csr_matrix
 from sklearn.preprocessing import normalize
-from src.models.metrics import evaluate_recommendations
+from src.models.metrics import evaluate_recommendations, filter_warm_items
 
 
 PROCESSED_DIR = Path("data/processed")
@@ -37,6 +37,9 @@ def build_recommendations(scores: np.ndarray, users: list, artists: list,
         seen = train_items.get(user_id, set())
         seen_idx = [j for j, a in enumerate(artists_arr) if a in seen]
         user_scores[seen_idx] = -np.inf
+        if not np.any(np.isfinite(user_scores)) or np.nanmax(user_scores) <= 0:
+            recommendations[user_id] = []
+            continue
         top_idx = np.argsort(user_scores)[::-1][:k]
         recommendations[user_id] = artists_arr[top_idx].tolist()
     return recommendations
@@ -132,6 +135,10 @@ def run_baselines() -> None:
     train_df = pd.read_csv(PROCESSED_DIR / "train_data.csv")
     val_df = pd.read_csv(PROCESSED_DIR / "val_data.csv")
     test_df = pd.read_csv(PROCESSED_DIR / "test_data.csv")
+
+    train_artists = set(train_df["artistID"].unique())
+    val_df = filter_warm_items(val_df, train_artists)
+    test_df = filter_warm_items(test_df, train_artists)
 
     users, user_idx = build_index(train_df["userID"])
     artists, artist_idx = build_index(train_df["artistID"])

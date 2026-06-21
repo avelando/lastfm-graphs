@@ -91,7 +91,8 @@ def permutation_test(mi: np.ndarray, mj: np.ndarray,
 def save_report(friend_df: pd.DataFrame, random_df: pd.DataFrame,
                 perm_j_means: np.ndarray, perm_c_means: np.ndarray,
                 p_jaccard: float, p_cosine: float,
-                mw_j: dict, mw_c: dict) -> None:
+                mw_j: dict, mw_c: dict,
+                data_source: str = "full") -> None:
     fj, fc = friend_df["jaccard"], friend_df["cosine"]
     rj, rc = random_df["jaccard"], random_df["cosine"]
 
@@ -100,8 +101,9 @@ def save_report(friend_df: pd.DataFrame, random_df: pd.DataFrame,
     def fmt_p(p: float) -> str:
         return f"< {1 / n_perm:.3f}" if p <= 1 / n_perm else f"{p:.4f}"
 
+    source_label = "historico completo" if data_source == "full" else "dados de treino (80%)"
     lines = [
-        "# Teste de Homofilia Musical — Last.fm\n",
+        f"# Teste de Homofilia Musical — Last.fm ({source_label})\n",
         f"Pares de amigos analisados: {len(friend_df)}  ",
         f"Pares aleatórios (baseline): {len(random_df)}  ",
         f"Permutações: {n_perm}  ",
@@ -137,20 +139,21 @@ def save_report(friend_df: pd.DataFrame, random_df: pd.DataFrame,
         f"  p-valor calculado com correção de Northrop: (extremos + 1) / ({n_perm} + 1).",
         "- Mann-Whitney U testa se as distribuições diferem; Cliff's Delta mede tamanho de efeito (-1 a 1).",
         "- Controle por grau/atividade disponível em homophily_pairs.csv (colunas degree_a, degree_b, n_artists_a, n_artists_b).",
-        "- Análise realizada com histórico completo de escuta. Versão com dados de treino: a executar após split treino/teste.",
     ]
 
-    report_path = REPORT_DIR / "homophily_report.md"
+    report_path = REPORT_DIR / f"homophily_report_{data_source}.md"
     report_path.write_text("\n".join(lines), encoding="utf-8")
     print(f"Relatório salvo em: {report_path}")
 
 
-def run_homophily(n_permutations: int = N_PERMUTATIONS) -> None:
+def run_homophily(n_permutations: int = N_PERMUTATIONS,
+                  data_source: str = "full") -> None:
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
     rng = np.random.default_rng(RANDOM_SEED)
 
-    print("Carregando dados...")
-    user_artists = pd.read_csv(PROCESSED_DIR / "user_artists_clean.csv")
+    source_file = "user_artists_clean.csv" if data_source == "full" else "train_data.csv"
+    print(f"Carregando dados ({data_source}: {source_file})...")
+    user_artists = pd.read_csv(PROCESSED_DIR / source_file)
     user_friends = pd.read_csv(PROCESSED_DIR / "user_friends_clean.csv")
 
     print("Construindo matrizes...")
@@ -206,7 +209,7 @@ def run_homophily(n_permutations: int = N_PERMUTATIONS) -> None:
     })
 
     all_pairs = pd.concat([friend_df, random_df], ignore_index=True)
-    pairs_path = REPORT_DIR / "homophily_pairs.csv"
+    pairs_path = REPORT_DIR / f"homophily_pairs_{data_source}.csv"
     all_pairs.to_csv(pairs_path, index=False, encoding="utf-8-sig")
     print(f"Pares salvos em: {pairs_path}")
 
@@ -224,10 +227,10 @@ def run_homophily(n_permutations: int = N_PERMUTATIONS) -> None:
     )
 
     perm_df = pd.DataFrame({"perm_jaccard_mean": perm_j_means, "perm_cosine_mean": perm_c_means})
-    perm_df.to_csv(REPORT_DIR / "homophily_permutations.csv", index=False, encoding="utf-8-sig")
+    perm_df.to_csv(REPORT_DIR / f"homophily_permutations_{data_source}.csv", index=False, encoding="utf-8-sig")
 
     save_report(friend_df, random_df, perm_j_means, perm_c_means,
-                p_jaccard, p_cosine, mw_j, mw_c)
+                p_jaccard, p_cosine, mw_j, mw_c, data_source)
 
     print("\n=== Resultado ===")
     print(f"Jaccard — amigos: {obs_j.mean():.4f}  aleatório: {rand_j.mean():.4f}  "

@@ -2,6 +2,10 @@ import numpy as np
 import pandas as pd
 
 
+def filter_warm_items(df: pd.DataFrame, train_artists: set) -> pd.DataFrame:
+    return df[df["artistID"].isin(train_artists)].copy()
+
+
 def ndcg_at_k(recommended: list, relevant: set, k: int = 10) -> float:
     top_k = recommended[:k]
     dcg = sum(
